@@ -23,6 +23,10 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.32.0-rc.0/pro
 tar -xf prometheus*.tar.gz
 rm prometheus*.tar.gz
 mv prom* prometheus
+rm /usr/bin/prometheus-server/prometheus/prometheus.yml
+wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/prometheus.yml -O /usr/bin/prometheus-server/prometheus/prometheus.yml
+
+
 
 echo -e "\n ############### Service file ###############"
 cat <<EOF >/etc/systemd/system/prometheus.service
@@ -34,7 +38,7 @@ After=network.target
 Type=simple
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/prometheus-server/prometheus/prometheus --web.enable-lifecycle --config.file=https://raw.githubusercontent.com/melwinvinod/SRE-learning/main/prometheus.yml
+ExecStart=/usr/bin/prometheus-server/prometheus/prometheus --web.enable-lifecycle --config.file=/usr/bin/prometheus-server/prometheus/prometheus.yml
 
 [Install]
 WantedBy=multi-user.target
