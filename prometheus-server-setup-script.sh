@@ -25,7 +25,7 @@ rm prometheus*.tar.gz
 mv prom* prometheus
 rm /usr/bin/prometheus-server/prometheus/prometheus.yml
 wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/prometheus.yml -O /usr/bin/prometheus-server/prometheus/prometheus.yml
-
+wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/my_rules.yml -O /usr/bin/prometheus-server/prometheus/my_rules.yml
 
 
 echo -e "\n ############### Service file ###############"
