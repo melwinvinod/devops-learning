@@ -27,6 +27,10 @@ rm /usr/bin/prometheus-server/prometheus/prometheus.yml
 wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/prometheus.yml -O /usr/bin/prometheus-server/prometheus/prometheus.yml
 wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/my_rules.yml -O /usr/bin/prometheus-server/prometheus/my_rules.yml
 
+#Setup Cron which pulls the rules file from git every 1 mins
+crontab -l | { cat; echo "* * * * * bash <( curl https://raw.githubusercontent.com/melwinvinod/devops-learning/main/update-rules.sh) > /usr/bin/prometheus-server/cron-output/output.txt
+"; } | crontab -
+
 
 echo -e "\n ############### Service file ###############"
 cat <<EOF >/etc/systemd/system/prometheus.service
