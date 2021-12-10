@@ -23,7 +23,7 @@ mv alertmanager* alertmanager
 
 
 #Setup Cron which pulls the rules file from git every 1 mins
-crontab -l | { cat; echo "* * * * * bash <( curl https://raw.githubusercontent.com/melwinvinod/devops-learning/main/update-alert-manager-rules.sh) > /usr/bin/prometheus-server/prometheus/cron-output-for-update-alert-manager-rules.txt
+crontab -l | { cat; echo "* * * * * bash <( curl https://raw.githubusercontent.com/melwinvinod/devops-learning/main/update-alert-manager-rules.sh) > /usr/bin/alertmanager-server/alertmanager/cron-output-for-update-alert-manager-rules.txt
 "; } | crontab -
 
 echo -e "\n ############### Service file ###############"
