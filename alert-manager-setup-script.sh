@@ -21,6 +21,11 @@ tar -xf alertmanager*.tar.gz
 rm alertmanager*.tar.gz
 mv alertmanager* alertmanager
 
+
+#Setup Cron which pulls the rules file from git every 1 mins
+crontab -l | { cat; echo "* * * * * bash <( curl https://raw.githubusercontent.com/melwinvinod/devops-learning/main/update-alert-manager-rules.sh) > /usr/bin/prometheus-server/prometheus/cron-output-for-update-alert-manager-rules.txt
+"; } | crontab -
+
 echo -e "\n ############### Service file ###############"
 cat <<EOF >/etc/systemd/system/alertmanager.service
 [Unit]
