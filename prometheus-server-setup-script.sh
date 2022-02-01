@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 _check_root() {
     if [ $(id -u) -ne 0 ]; then
         echo "Please run as root" >&2
