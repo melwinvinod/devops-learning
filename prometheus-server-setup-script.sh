@@ -30,7 +30,6 @@ wget -q https://raw.githubusercontent.com/melwinvinod/devops-learning/main/my_ru
 crontab -l | { cat; echo "* * * * * bash <( curl https://raw.githubusercontent.com/melwinvinod/devops-learning/main/update-alerting-rules-prometheus.sh) > /usr/bin/prometheus-server/prometheus/cron-output-for-update-alerting-rules-prometheus.txt
 "; } | crontab -
 
-
 echo -e "\n ############### Service file ###############"
 cat <<EOF >/etc/systemd/system/prometheus.service
 [Unit]
@@ -46,7 +45,6 @@ ExecStart=/usr/bin/prometheus-server/prometheus/prometheus --web.enable-lifecycl
 [Install]
 WantedBy=multi-user.target
 EOF
-
 
 echo -e "\n ############### TO BE RUN AFTER SERVICE IS CONFIGURED ###############"
 systemctl daemon-reload
