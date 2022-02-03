@@ -1,14 +1,14 @@
 #!/bin/bash
-sudo -i
-cd /opt
-apt install -y unzip
-wget https://releases.hashicorp.com/consul/1.11.2/consul_1.11.2_linux_amd64.zip
-unzip consul_1.11.2_linux_amd64.zip
-rm consul_1.11.2_linux_amd64.zip
-cp consul /usr/bin
+
+sudo cd /opt
+sudo apt install -y unzip
+sudo wget https://releases.hashicorp.com/consul/1.11.2/consul_1.11.2_linux_amd64.zip
+sudo unzip consul_1.11.2_linux_amd64.zip
+sudo rm consul_1.11.2_linux_amd64.zip
+sudo cp consul /usr/bin
 
 {
-tee -a  /etc/systemd/system/consul.service > /dev/null <<EOT
+sudo tee -a  /etc/systemd/system/consul.service > /dev/null <<EOT
 [Unit]
 Description=Consul Server
 Documentation=https://www.consul.io/docs
@@ -24,6 +24,6 @@ WantedBy=multi-user.target
 EOT
 }
 
-systemctl daemon-reload
-systemctl start consul.service
-systemctl enable consul.service
+sudo systemctl daemon-reload
+sudo systemctl start consul.service
+sudo systemctl enable consul.service
