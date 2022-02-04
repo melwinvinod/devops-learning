@@ -15,7 +15,7 @@ Documentation=https://www.consul.io/docs
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/consul agent -dev --client=0.0.0.0
+ExecStart=/usr/bin/consul agent -dev -client=0.0.0.0 -bind=0.0.0.0
 Restart=always
 RestartSec=1
 
