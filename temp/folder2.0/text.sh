@@ -1,1 +1,1 @@
-testing git2consul
+nice, consul is synched
